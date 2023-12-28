@@ -28,7 +28,7 @@ const AddTopic = () => {
         }
       );
       if (res.ok) {
-        router.refresh();
+        // router.refresh();
         router.push("/");
       }
     } catch (err) {}
