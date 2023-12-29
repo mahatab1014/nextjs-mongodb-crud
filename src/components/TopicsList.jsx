@@ -2,15 +2,16 @@ import Link from "next/link";
 import RemoveBtn from "./RemoveBtn";
 import { HiPencilAlt } from "react-icons/hi";
 
-
-
 const TopicsList = async () => {
-  const res = await fetch("http://localhost:3000/api/topics", {
-    cache: "no-store",
-    next: {
-      revalidate: 0,
-    },
-  });
+  const res = await fetch(
+    "https://nextjs-mongodb-crud-topaz.vercel.app/api/topics",
+    {
+      cache: "no-store",
+      next: {
+        revalidate: 0,
+      },
+    }
+  );
   if (!res.ok) {
     console.log(`HTTP error! Status: ${res.status}`);
   }

@@ -13,13 +13,16 @@ export default function EditTopicForm({ id, title, description }) {
     e.preventDefault();
 
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ newTitle, newDescription }),
-      });
+      const res = await fetch(
+        `https://nextjs-mongodb-crud-topaz.vercel.app/api/topics/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ newTitle, newDescription }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to update topic");
