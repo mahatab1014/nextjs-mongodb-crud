@@ -4,12 +4,9 @@ import { HiOutlineTrash } from "react-icons/hi";
 const RemoveBtn = ({ id }) => {
   const router = useRouter();
   const deleteTopic = async () => {
-    await fetch(
-      `https://nextjs-mongodb-crud-topaz.vercel.app/api/topics?id=${id}`,
-      {
-        method: "DELETE",
-      }
-    ).then((response) => {
+    await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+      method: "DELETE",
+    }).then((response) => {
       if (response.ok) {
         router.refresh();
       }

@@ -2,12 +2,9 @@ import EditTopicForm from "@/components/EditTopicForm";
 
 const getTopicById = async (id) => {
   try {
-    const res = await fetch(
-      `https://nextjs-mongodb-crud-topaz.vercel.app/api/topics/${id}`,
-      {
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch topic");

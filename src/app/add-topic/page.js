@@ -1,5 +1,6 @@
 "use client";
 
+import { revalidateTag } from "next/cache";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -17,19 +18,16 @@ const AddTopic = () => {
     };
 
     try {
-      const res = await fetch(
-        "https://nextjs-mongodb-crud-topaz.vercel.app/api/topics",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(doc),
-        }
-      );
+      const res = await fetch("http://localhost:3000/api/topics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(doc),
+      });
       if (res.ok) {
-        router.refresh();
         router.push("/");
+        router.refresh();
       }
     } catch (err) {}
   };
